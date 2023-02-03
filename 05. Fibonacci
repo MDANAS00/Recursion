@@ -1,0 +1,10 @@
+Link - https://practice.geeksforgeeks.org/problems/print-n-to-1-without-loop/1?page=1&sortBy=newest&query=page1sortBynewest
+Time Complexity - O(2^N)
+Space Complexity - O(N) Space is linear because only 1 function is popped back then only the other one will come into play...Only linear function will be available in the recusrion call stack.
+
+class Solution {
+    public int fib(int n) {
+        if(n <= 1) return n;
+        return fib(n-1) + fib(n-2);
+    }
+}

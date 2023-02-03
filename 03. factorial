@@ -1,0 +1,13 @@
+Link - https://practice.geeksforgeeks.org/problems/factorial5739/1
+Time Complexity - O(N)
+Space Complexity - O(N)
+
+class Solution {
+    static long factorial(int N) {
+        if(N<=0) {
+            return 1;
+        }
+        long x = N*factorial(N-1);
+        return x;
+    }
+}
