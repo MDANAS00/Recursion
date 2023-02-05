@@ -1,0 +1,46 @@
+Link - https://practice.geeksforgeeks.org/problems/find-index4752/1
+Time Complexity - O(N)
+Space Complexity - O(N)
+
+Solution with two pass :-
+        class Solution
+        { 
+            static int firstIDX(int arr[],int idx,int Key) {
+                if(idx == arr.length) return -1;
+                if(arr[idx] == Key) return idx;
+                return firstIDX(arr,idx+1,Key);
+            }
+            
+            static int lastIDX(int arr[],int idx,int Key) {
+                if(idx == -1) return -1;
+                if(arr[idx] == Key) return idx;
+                return lastIDX(arr,idx-1,Key);
+            }
+            // Function to find starting and end index 
+            static int[] findIndex(int a[], int N, int key) 
+            { 
+                int first = firstIDX(a,0,key);
+                int last = lastIDX(a,N-1,key);
+                return new int[]{first,last};
+            }
+        }
+
+Solution with one pass :-
+        class Solution
+        { 
+            static int[] search(int arr[],int idx,int Key) {
+                if(idx == arr.length) return new int[]{-1,-1};
+                int[] ans = IDX(arr,idx+1,Key);
+                if(arr[idx] == Key) {
+                    ans[0] = idx;
+                    ans[1] = Math.max(ans[1],idx);
+                }
+                return ans;
+            }
+
+            static int[] findIndex(int a[], int N, int key) 
+            { 
+                return search(a,0,key);
+            }
+        }
+
